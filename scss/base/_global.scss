@@ -1,0 +1,25 @@
+//
+// Make html and body take full height by default
+//
+html,
+body {
+	height: 100%;
+}
+
+html {
+	font-family: var(--text-font);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+input,
+button,
+textarea,
+select {
+	border: none;
+	font-family: var(--text-font);
+}
+
+* {
+	box-sizing: border-box;
+}
