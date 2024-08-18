@@ -1,6 +1,8 @@
 import '@/scss/base/index.scss'
+import styles from '@/scss/components/Dashboard.module.scss'
 import localFont from 'next/font/local'
 import META from '@/data/meta'
+import Sidebar from './_components/Sidebar'
 
 const satoshi = localFont({
 	src: '../public/fonts/satoshi/Satoshi-Variable.woff2',
@@ -41,7 +43,15 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en' className={`${satoshi.variable}`}>
 			<body>
-				{children}
+				<div className={styles.container}>
+					<div className={styles.container__sidebar}>
+						<Sidebar />
+					</div>
+
+					<div className={styles.container__content}>
+						{children}
+					</div>
+				</div>
 			</body>
 		</html>
 	);
