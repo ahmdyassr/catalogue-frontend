@@ -37,7 +37,7 @@ const Table = ({ data }) => {
 					className={styles.table__searchInput}
 					type='text'
 					placeholder='Search all products...'
-					value={searchQuery}
+					value={searchQuery || ''}
 					onChange={(e) => setSearchQuery(e.target.value)} />
 			</div>
 
