@@ -1,4 +1,7 @@
+'use client'
+
 import styles from '@/scss/components/Sidebar.module.scss'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from './Logo'
@@ -9,6 +12,16 @@ import StatsIcon from './icons/Stats'
 import IntegrationsIcon from './icons/Integration'
 
 const Sidebar = () => {
+	const pathname = usePathname()
+
+	const ITEMS = [
+		{ href: '/products', Icon: TagIcon, text: 'Products', isActive: true },
+		{ href: '/orders', Icon: CartIcon, text: 'Orders' },
+		{ href: '/customers', Icon: UsersIcon, text: 'Customers' },
+		{ href: '/analytics', Icon: StatsIcon, text: 'Analytics' },
+		{ href: '/integrations', Icon: IntegrationsIcon, text: 'Integrations' }
+	]
+
 	return (
 		<aside className={styles.sidebar}>
 
@@ -17,42 +30,18 @@ const Sidebar = () => {
 			</div>
 
 			<nav className={styles.sidebar__nav}>
-
-				<Link className={`${styles.sidebar__navItem} ${styles.isActive}`} href='/'>
-					<span className={styles.sidebar__navItemIcon}>
-						<TagIcon fill='var(--dark-500)' />
-					</span>
-					<span className={styles.sidebar__navItemText}>Products</span>
-				</Link>
-
-				<Link className={styles.sidebar__navItem} href='/'>
-					<span className={styles.sidebar__navItemIcon}>
-						<CartIcon fill='var(--light-500)' />
-					</span>
-					<span className={styles.sidebar__navItemText}>Orders</span>
-				</Link>
-
-				<Link className={styles.sidebar__navItem} href='/'>
-					<span className={styles.sidebar__navItemIcon}>
-						<UsersIcon fill='var(--light-500)' />
-					</span>
-					<span className={styles.sidebar__navItemText}>Customers</span>
-				</Link>
-
-				<Link className={styles.sidebar__navItem} href='/'>
-					<span className={styles.sidebar__navItemIcon}>
-						<StatsIcon fill='var(--light-500)' />
-					</span>
-					<span className={styles.sidebar__navItemText}>Analytics</span>
-				</Link>
-
-				<Link className={styles.sidebar__navItem} href='/'>
-					<span className={styles.sidebar__navItemIcon}>
-						<IntegrationsIcon fill='var(--light-500)' />
-					</span>
-					<span className={styles.sidebar__navItemText}>Integrations</span>
-				</Link>
-
+				{ITEMS.map(({ href, Icon, text }) => (
+					<Link
+						key={text}
+						className={`${styles.sidebar__navItem} ${pathname === href ? styles.isActive : ''}`}
+						href={href}
+					>
+						<span className={styles.sidebar__navItemIcon}>
+							<Icon fill={pathname === href ? 'var(--dark-500)' : 'var(--light-500)'} />
+						</span>
+						<span className={styles.sidebar__navItemText}>{text}</span>
+					</Link>
+				))}
 			</nav>
 
 			<div className={styles.sidebar__profile}>
