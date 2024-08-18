@@ -8,6 +8,7 @@ import Button from './Button'
 import Input from './Input'
 import Textarea from './Textarea'
 import Dropzone from './Dropzone'
+import Selectbar from './Selectbar'
 import Select from './Select'
 import BackIcon from './icons/Back'
 import addProduct from '@/actions/addProduct'
@@ -77,7 +78,7 @@ const Page = () => {
 			if (key === 'images') return value.length === 0;
 
 			// Check if the value is null, undefined, or an empty string
-			return value === null || value === undefined || value === '';
+			return value === null || value === undefined || value === ''
 		})
 	}
 
@@ -113,16 +114,19 @@ const Page = () => {
 						<Input
 							label='Name'
 							value={product?.name}
+							placeholder='Long sleeve dress'
 							onChange={e => updateProduct({ name: e.target.value })} />
 					</div>
+
 					<div className={styles.form__row}>
 						<Textarea
 							label='Description'
 							value={product?.description}
 							onChange={e => updateProduct({ description: e.target.value })} />
 					</div>
+
 					<div className={styles.form__row}>
-						<Select
+						<Selectbar
 							label='Status'
 							options={[{
 								value: 'active',
@@ -134,18 +138,44 @@ const Page = () => {
 							value={product?.status}
 							onChange={value => updateProduct({ status: value })} />
 					</div>
+
 					<div className={styles.form__row}>
-						<Input
+						<Select
 							label='Category'
+							options={[
+								{
+									label: 'Clothing',
+									value: 'clothing'
+								},
+								{
+									label: 'Electronics',
+									value: 'electronics'
+								},
+								{
+									label: 'Home & Garden',
+									value: 'home-garden'
+								},
+								{
+									label: 'Beauty & Personal Care',
+									value: 'beauty-personal-care'
+								},
+								{
+									label: 'Sports & Outdoors',
+									value: 'sports-outdoors'
+								}
+							]}
 							value={product?.category}
-							onChange={e => updateProduct({ category: e.target.value })} />
+							onChange={value => updateProduct({ category: value })}
+						/>
 					</div>
+
 					<div className={styles.form__row}>
 						<Input
 							label='Price'
 							value={product?.price}
 							onChange={e => updateProduct({ price: e.target.value })} />
 					</div>
+
 					<div className={styles.form__row}>
 						<Dropzone
 							label='Image'
