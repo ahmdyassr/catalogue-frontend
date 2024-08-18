@@ -1,13 +1,44 @@
+'use client'
+
 import styles from '@/scss/components/Table.module.scss'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import getProducts from '@/actions/getProducts'
 
 const Table = ({ data }) => {
+	const [products, setProducts] = useState(data)
+	const [searchQuery, setSearchQuery] = useState(null)
+	const [isLoading, setIsLoading] = useState(false)
+
+	const fetchProducts = async () => {
+		const fetchedProducts = await getProducts(searchQuery)
+		setProducts(fetchedProducts)
+	}
+
+	// use effect to fetch filtered products everytime the input changes
+	useEffect(() => {
+		if (searchQuery !== null) {
+			setIsLoading(true)
+			const delayDebounceFn = setTimeout(async () => {
+				await fetchProducts()
+				setIsLoading(false)
+			}, 2000)
+
+			return () => clearTimeout(delayDebounceFn)
+		}
+	}, [searchQuery])
+
 	return (
 		<div className={styles.table}>
 
 			<div className={styles.table__search}>
-				<input className={styles.table__searchInput} type='text' placeholder='Search all products...' />
+				<input
+					className={styles.table__searchInput}
+					type='text'
+					placeholder='Search all products...'
+					value={searchQuery}
+					onChange={(e) => setSearchQuery(e.target.value)} />
 			</div>
 
 			<div className={styles.table__header}>
@@ -20,7 +51,7 @@ const Table = ({ data }) => {
 
 			<div className={styles.table__body}>
 
-				{data.map(({ _id, name, status, category, price, images }) => (
+				{products.map(({ _id, name, status, category, price, images }) => (
 					<div key={_id} className={styles.table__row}>
 						<Link className={styles.product} href={`/products/${_id}`}>
 							<span className={styles.product__image}>
@@ -36,6 +67,10 @@ const Table = ({ data }) => {
 						</Link>
 					</div>
 				))}
+
+				{products.length === 0 && (<p className={styles.table__hint}>No products found!</p>)}
+
+				{isLoading && (<span className={styles.table__loader}></span>)}
 			</div>
 
 			<div className={styles.table__footer}>
