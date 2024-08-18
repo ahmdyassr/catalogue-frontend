@@ -18,6 +18,7 @@
 	border-radius: 8px;
 	font-weight: var(--medium);
 	background-color: var(--light-200);
+	resize: vertical;
 
 	&:focus {
 		outline: none;
