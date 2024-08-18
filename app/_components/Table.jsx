@@ -77,10 +77,6 @@ const Table = ({ data }) => {
 				<div className={styles.table__footerCounter}>
 					Showing {data.length} products
 				</div>
-				<div className={styles.table__footerNav}>
-					<button className={styles.table__footerNavButton}>Prev</button>
-					<button className={styles.table__footerNavButton}>Next</button>
-				</div>
 			</div>
 
 		</div>
