@@ -1,5 +1,17 @@
 .container {
-	display: grid;
-	grid-template-columns: 224px 1fr;
 	min-height: 100%;
+	max-width: 100%;
+}
+
+.container__sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 224px;
+}
+
+.container__content {
+	width: calc(100% - 224px);
+	margin-left: 224px;
 }
