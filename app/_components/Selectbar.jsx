@@ -7,6 +7,7 @@ const Selectbar = ({ label, options, value, onChange }) => {
 			<span className={styles.select__box}>
 				{options.map(({ label, value: optionValue }) => (
 					<span
+						key={optionValue}
 						className={`${styles.select__tab} ${optionValue === value && styles.isActive}`}
 						onClick={() => onChange(optionValue)}>{label}</span>
 				))}
