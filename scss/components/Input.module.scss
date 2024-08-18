@@ -24,4 +24,8 @@
 		background-color: var(--light-100);
 		box-shadow: 0 0 0 3px rgba(161, 161, 161, 0.50);
 	}
+
+	&::placeholder {
+		color: var(--light-500);
+	}
 }
