@@ -69,6 +69,18 @@ const Page = () => {
 		router.push(`/products/${_id}`)
 	}
 
+	const isFormFilled = () => {
+		// Check if all required fields are filled
+		return !Object.entries(product).some(([key, value]) => {
+
+			// Check if 'images' is empty array
+			if (key === 'images') return value.length === 0;
+
+			// Check if the value is null, undefined, or an empty string
+			return value === null || value === undefined || value === '';
+		})
+	}
+
 	return (
 		<>
 			<header className={styles.header}>
@@ -85,7 +97,10 @@ const Page = () => {
 
 				<div className={styles.header__right}>
 					<Button text='Cancel' type='secondary' onClick={() => router.push('/products')} />
-					<Button text='Save' onClick={handleAddProduct} />
+					<Button
+						text='Save'
+						isDisabled={!isFormFilled()}
+						onClick={handleAddProduct} />
 				</div>
 			</header>
 
