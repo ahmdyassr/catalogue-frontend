@@ -40,7 +40,7 @@ const Table = ({ data }) => {
 
 			<div className={styles.table__footer}>
 				<div className={styles.table__footerCounter}>
-					Showing 8 out of 24 products
+					Showing {data.length} products
 				</div>
 				<div className={styles.table__footerNav}>
 					<button className={styles.table__footerNavButton}>Prev</button>
