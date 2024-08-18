@@ -70,6 +70,9 @@
 	display: flex;
 	align-items: center;
 	margin-top: auto;
+	padding: 2px;
+	border-radius: 8px;
+	background-color: var(--light-200);
 }
 
 .sidebar__profileImage {
@@ -83,11 +86,13 @@
 }
 
 .sidebar__profileStore {
+	font-size: 14px;
 	font-weight: var(--semibold);
 	color: var(--dark-500);
 }
 
 .sidebar__profileName {
+	font-size: 14px;
 	font-weight: var(--semibold);
 	color: var(--dark-100);
 }

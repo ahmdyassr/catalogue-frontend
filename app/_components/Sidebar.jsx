@@ -59,8 +59,8 @@ const Sidebar = () => {
 				<div className={styles.sidebar__profileImage}>
 					<Image
 						src='/images/avatar.jpg'
-						width={40}
-						height={40}
+						width={48}
+						height={48}
 						alt='Adam Sandler' />
 				</div>
 				<div className={styles.sidebar__profileContent}>
