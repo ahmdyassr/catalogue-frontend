@@ -40,4 +40,11 @@
 			border-color: var(--danger-500);
 		}
 	}
+
+	&[disabled] {
+		background-color: var(--light-400);
+		color: var(--light-500);
+		box-shadow: none;
+		cursor: default;
+	}
 }
