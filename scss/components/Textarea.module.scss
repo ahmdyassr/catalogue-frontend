@@ -1,0 +1,19 @@
+.textarea {
+	display: flex;
+	flex-flow: column;
+}
+
+.textarea__label {
+	margin-bottom: 4px;
+	color: var(--dark-200);
+	font-weight: var(--medium);
+	font-size: 14px;
+}
+
+.textarea__box {
+	min-height: 120px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	font-weight: var(--medium);
+	background-color: var(--light-200);
+}
