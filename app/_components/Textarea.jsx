@@ -4,7 +4,7 @@ const Textarea = ({ label, value, onChange }) => {
 	return (
 		<div className={styles.textarea}>
 			<label className={styles.textarea__label}>{label}</label>
-			<textarea className={styles.textarea__box} onChange={onChange}>{value}</textarea>
+			<textarea className={styles.textarea__box} value={value} onChange={onChange}></textarea>
 		</div>
 	)
 }
