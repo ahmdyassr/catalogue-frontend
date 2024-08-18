@@ -22,9 +22,9 @@ const Page = () => {
 	const [product, setProduct] = useState({
 		name: '',
 		description: '',
-		category: '',
+		category: 'clothing',
 		status: 'active',
-		price: null,
+		price: '',
 		images: []
 	})
 
@@ -173,6 +173,7 @@ const Page = () => {
 					<div className={styles.form__row}>
 						<PriceInput
 							label='Price'
+							placeholder='0'
 							value={product?.price}
 							onChange={e => updateProduct({ price: e.target.value })} />
 					</div>
