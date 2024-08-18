@@ -1,0 +1,93 @@
+.sidebar {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	padding: 16px;
+	border-right: 1px solid var(--light-300);
+}
+
+// LOGO
+.sidebar__logo {
+	margin-bottom: 24px;
+}
+
+.sidebar__logoLink {
+	display: flex;
+}
+
+
+// NAV
+.sidebar__nav {
+	display: flex;
+	flex-flow: column;
+}
+
+.sidebar__navItem {
+	position: relative;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	padding: 8px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 6px;
+		background-color: var(--light-200);
+		opacity: 0;
+	}
+
+	&.isActive:before {
+		opacity: 1;
+	}
+}
+
+.sidebar__navItemIcon {
+	position: relative;
+	margin-right: 8px;
+
+	.isActive & {
+		fill: var(--dark-700);
+	}
+}
+
+.sidebar__navItemText {
+	position: relative;
+	color: var(--dark-200);
+	font-weight: var(--semibold);
+
+	.isActive & {
+		color: var(--dark-700);
+	}
+}
+
+// PROFILE
+.sidebar__profile {
+	display: flex;
+	align-items: center;
+	margin-top: auto;
+}
+
+.sidebar__profileImage {
+	margin-right: 8px;
+}
+
+.sidebar__profileContent {
+	display: flex;
+	flex-flow: column;
+	gap: 6px;
+}
+
+.sidebar__profileStore {
+	font-weight: var(--semibold);
+	color: var(--dark-500);
+}
+
+.sidebar__profileName {
+	font-weight: var(--semibold);
+	color: var(--dark-100);
+}
