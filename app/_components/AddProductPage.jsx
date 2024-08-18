@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Button from './Button'
 import Input from './Input'
+import PriceInput from './PriceInput'
 import Textarea from './Textarea'
 import Dropzone from './Dropzone'
 import Selectbar from './Selectbar'
@@ -170,7 +171,7 @@ const Page = () => {
 					</div>
 
 					<div className={styles.form__row}>
-						<Input
+						<PriceInput
 							label='Price'
 							value={product?.price}
 							onChange={e => updateProduct({ price: e.target.value })} />
