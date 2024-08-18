@@ -15,7 +15,7 @@ const Sidebar = () => {
 	const pathname = usePathname()
 
 	const ITEMS = [
-		{ href: '/products', Icon: TagIcon, text: 'Products', isActive: true },
+		{ href: '/products', Icon: TagIcon, text: 'Products' },
 		{ href: '/orders', Icon: CartIcon, text: 'Orders' },
 		{ href: '/customers', Icon: UsersIcon, text: 'Customers' },
 		{ href: '/analytics', Icon: StatsIcon, text: 'Analytics' },
