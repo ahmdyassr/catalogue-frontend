@@ -19,6 +19,7 @@ import uploadImage from '@/actions/uploadImage'
 const Page = () => {
 	const router = useRouter()
 	const [isUploading, setIsUploading] = useState(false)
+	const [isSaving, setIsSaving] = useState(false)
 	const [product, setProduct] = useState({
 		name: '',
 		description: '',
@@ -61,6 +62,9 @@ const Page = () => {
 
 	const handleAddProduct = async () => {
 
+		// update state
+		setIsSaving(true)
+
 		// add product
 		const newProduct = await addProduct(product)
 
@@ -69,6 +73,7 @@ const Page = () => {
 
 		// redirect
 		router.push(`/products/${_id}`)
+
 	}
 
 	const isFormFilled = () => {
@@ -98,9 +103,14 @@ const Page = () => {
 				</div>
 
 				<div className={styles.header__right}>
-					<Button text='Cancel' type='secondary' onClick={() => router.push('/products')} />
+					<Button
+						text='Cancel'
+						type='secondary'
+						onClick={() => router.push('/products')} />
 					<Button
 						text='Save'
+						loadingText='Saving...'
+						isLoading={isSaving}
 						isDisabled={!isFormFilled()}
 						onClick={handleAddProduct} />
 				</div>

@@ -18,6 +18,8 @@ import refreshProducts from '@/actions/refreshProducts'
 const Page = ({ data }) => {
 	const router = useRouter()
 	const [isUploading, setIsUploading] = useState(false)
+	const [isSaving, setIsSaving] = useState(false)
+	const [isDeleting, setIsDeleting] = useState(false)
 	const [product, setProduct] = useState({
 		name: data?.name,
 		description: data?.description,
@@ -60,6 +62,9 @@ const Page = ({ data }) => {
 
 	const handleUpdateProduct = async () => {
 
+		// update state
+		setIsSaving(true)
+
 		// update product
 		await updateProduct(data?._id, product)
 
@@ -68,6 +73,9 @@ const Page = ({ data }) => {
 	}
 
 	const handleDeleteProduct = async () => {
+
+		// update state
+		setIsDeleting(true)
 
 		// delete
 		const deletedProduct = await deleteProduct(data?._id)
@@ -97,8 +105,17 @@ const Page = ({ data }) => {
 				</div>
 
 				<div className={styles.header__right}>
-					<Button text='Delete' type='danger' onClick={handleDeleteProduct} />
-					<Button text='Save' onClick={handleUpdateProduct} />
+					<Button
+						text='Delete'
+						loadingText='Deleting...'
+						isLoading={isDeleting}
+						type='danger'
+						onClick={handleDeleteProduct} />
+					<Button
+						text='Save'
+						loadingText='Saving...'
+						isLoading={isSaving}
+						onClick={handleUpdateProduct} />
 				</div>
 			</header>
 

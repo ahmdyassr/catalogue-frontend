@@ -27,6 +27,12 @@
 			color: var(--dark-100);
 			border-color: var(--light-300);
 		}
+
+		&[disabled] {
+			background-color: transparent;
+			color: var(--light-500);
+			border-color: var(--light-300);
+		}
 	}
 
 	&.danger {
@@ -38,6 +44,12 @@
 		&:hover {
 			color: var(--danger-600);
 			border-color: var(--danger-500);
+		}
+
+		&[disabled] {
+			background-color: transparent;
+			color: var(--light-500);
+			border-color: var(--light-300);
 		}
 	}
 

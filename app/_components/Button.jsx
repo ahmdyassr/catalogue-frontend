@@ -2,16 +2,16 @@
 
 import styles from '@/scss/components/Button.module.scss'
 
-const Button = ({ text, type, isDisabled, onClick }) => {
+const Button = ({ text, loadingText, type, isLoading, isDisabled, onClick }) => {
 	return (
 		<button
 			className={`
 				${styles.button} 
 				${type === 'secondary' && styles.secondary}
 				${type === 'danger' && styles.danger}`}
-			disabled={isDisabled}
+			disabled={isDisabled || isLoading}
 			onClick={onClick}>
-			{text}
+			{isLoading ? loadingText : text}
 		</button>
 	)
 }
