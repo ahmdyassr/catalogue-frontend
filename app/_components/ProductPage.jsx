@@ -70,6 +70,9 @@ const Page = ({ data }) => {
 
 		// refresh
 		router.refresh()
+
+		// reset state
+		setIsSaving(false)
 	}
 
 	const handleDeleteProduct = async () => {
