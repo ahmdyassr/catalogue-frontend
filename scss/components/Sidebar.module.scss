@@ -44,6 +44,10 @@
 	&.isActive:before {
 		opacity: 1;
 	}
+
+	&:not(.isActive):hover {
+		opacity: 0.75;
+	}
 }
 
 .sidebar__navItemIcon {
